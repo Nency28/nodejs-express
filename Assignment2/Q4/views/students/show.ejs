@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <header>
+        <h1>Student Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/students">Students</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Student Details</h2>
+        <p><strong>Name:</strong> <%= student.name %></p>
+        <p><strong>Age:</strong> <%= student.age %></p>
+        <a href="/students/<%= student._id %>/edit" class="button">Edit</a>
+        <a href="#" class="button delete" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">Delete</a>
+        <form id="delete-form" action="/students/<%= student._id %>?_method=DELETE" method="POST" style="display: none;"></form>
+        <a href="/students" class="button">Back to List</a>
+    </div>
+</body>
+</html>

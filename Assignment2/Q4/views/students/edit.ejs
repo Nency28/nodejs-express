@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <header>
+        <h1>Student Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/students">Students</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <form action="/students/<%= student._id %>?_method=PUT" method="POST">
+            <h2>Edit Student</h2>
+            <% if (typeof message !== 'undefined' && message.length > 0) { %>
+                <div class="alert alert-danger">
+                    <% message.forEach(msg => { %>
+                        <p><%= msg %></p>
+                    <% }) %>
+                </div>
+            <% } %>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<%= student.name %>" required>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" value="<%= student.age %>" required>
+            <input type="submit" value="Update Student">
+        </form>
+    </div>
+</body>
+</html>
